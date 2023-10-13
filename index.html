@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Response Viewer</title>
+</head>
+<body>
+    <h1>API Response Viewer</h1>
+
+    <form id="apiForm">
+        <label for="apiUrl">URL API:</label>
+        <input type="text" id="apiUrl" placeholder="Masukkan URL API" required>
+        <br>
+        <label for="requestBody">Request Body:</label>
+        <textarea id="requestBody" rows="4" cols="50" placeholder="Masukkan Request Body"></textarea>
+        <br>
+        <button type="submit">Kirim Permintaan API</button>
+    </form>
+
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById("apiForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const apiUrl = document.getElementById("apiUrl").value;
+            const requestBody = document.getElementById("requestBody").value;
+
+            fetch(apiUrl, {
+                method: 'POST', // Ganti dengan metode HTTP yang sesuai
+                body: requestBody,
+                headers: {
+                    'Content-Type': 'application/json' // Sesuaikan dengan jenis konten yang digunakan oleh API
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById("response").textContent = "Terjadi kesalahan: " + error;
+            });
+        });
+    </script>
+</body>
+</html>
