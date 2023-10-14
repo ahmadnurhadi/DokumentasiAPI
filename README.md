@@ -1,13 +1,16 @@
 # DokumentasiAPI
 dokumentasi ini di buat untuk belajar mengenal API
 
-isi Body 
+
+//dari web sederhana yang di buat untuk mencoba API beserta response yang didapatkan , di gunakan dan diimplementasikan pada postman
+
+berikut dari isi Body 
 {
     "email" : "sample@example.com",
     "password" : "123adsfadf@"
 }
 
-hasil response yang diinginkan 
+hasil response yang diinginkan / output yang diinginkan
 
 {
     "status": "success",
